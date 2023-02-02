@@ -18,6 +18,8 @@ Generate Recipes from list of ingredients
 <h2>Environments Used </h2>
 
 - <b>Windows 11</b>
+- <b>Windows 10</b>
+- <b>XenDeskTop</b>
 
 <h2>Program walk-through:</h2>
 
