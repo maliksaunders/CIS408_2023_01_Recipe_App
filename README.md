@@ -11,6 +11,9 @@ Generate Recipes from list of ingredients
 
 - <b>Python</b> 
 - <b>Visual Studio Code</b>
+- <b>HTML</b>
+- <b>CSS</b>
+- <b>MYSQL</b>
 
 <h2>Environments Used </h2>
 
