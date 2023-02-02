@@ -1,0 +1,19 @@
+User_ID,Ingredients,Cusine_Type,Diet_Restriction,Calories_Per_Person,Yielded_Recipies,Servings,Calories_Per_Serving,Fat_Per_Serving,Protein_Per_Serving
+1234,Chicken,Indian,N,1500,"Sweet Potato, Carrot, and Ginger Curry Soup",3,318,10,14
+1234,Peas,Null,Null,Null,Curried Coconut Rice,4,560,24,14
+1234,Potatoes,Null,Null,Null,Classic Lamb Curry,4,1282,42,57
+1234,Null,Null,Null,Null,Healthy Chicken Curry,6,240,4,23
+1234,Null,Null,Null,Null,Korean Curry,4,500,23,29
+1234,Null,Null,Null,Null,Sweet Potato Coconut Curry Soup,10,216,12,5
+4567,Beef,Mexican,N,800,MEXICAN GARDEN SALAD DIABETIC FRIENDLY Recipe,8,260,15,16
+4567,Broccoli,Null,Null,Null,Null,Null,Null,Null,Null
+4567,Carrots,Null,Null,Null,Null,Null,Null,Null,Null
+8910,Pork,N,gluten-free,900,"Roasted Corn, Black Bean & Mango Salad",8,256,2,14
+8910,Corn,Null,Null,Null,The January Monthly Spice Box,10,317,20,20
+8910,Beans,Null,Null,Null,Tortilla Pizzas,6,143,8,6
+8910,Null,Null,Null,Null,Vegan Jackfruit Tacos,4,495,16,15
+8910,Null,Null,Null,Null,All-in-One Dish,12,275,15,11
+8910,Null,Null,Null,Null,Meal Prep Carnitas Burrito Bowls,4,551,19,39
+8910,Null,Null,Null,Null,Stir Fried Rice American Alternative,8,545,13,24
+1112,Fish,British,gluten-free,Null,"Sorry, no recipes found!",Null,Null,Null,Null
+1112,Asparagus,Null,Null,Null,Null,Null,Null,Null,Null
