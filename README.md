@@ -11,10 +11,15 @@ Generate Recipes from list of ingredients
 
 - <b>Python</b> 
 - <b>Visual Studio Code</b>
+- <b>HTML</b>
+- <b>CSS</b>
+- <b>MYSQL</b>
 
 <h2>Environments Used </h2>
 
 - <b>Windows 11</b>
+- <b>Windows 10</b>
+- <b>XenDeskTop</b>
 
 <h2>Program walk-through:</h2>
 
