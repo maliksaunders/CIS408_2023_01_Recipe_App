@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAP food website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="topnav">
+        <a href="main.html">Home</a>
+        <a class="login" href="#signup">Sign Up</a>
+        <a class="login" href="#login">Login</a>
+    </div>
+    <div class="main">
+        <div class="flexbox">
+            <div class="sidenav">
+                <a href="search.html">Ingredient Search</a><br>
+                <a href="#">Filter Types</a><br>
+            </div>
+            <div class="content">
+                <div class="searchbar">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit" id="btnSubmit"><i class="fa fa-search"></i></button>
+                </div>
+                <div></div>
+            </div>
+            <div class="rightbar">
+                <h1>Test</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("btnSubmit").onclick = function () {
+            location.href = "searching.html"
+        }
+    </script>
+</body>

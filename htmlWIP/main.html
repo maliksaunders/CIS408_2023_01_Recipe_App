@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAP food website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="topnav">
+        <a href="main.html">Home</a>
+        <a class="login" href="#signup">Sign Up</a>
+        <a class="login" href="index.html">Login</a>
+    </div>
+    <div class="main">
+        <div class="flexbox">
+            <div class="sidenav">
+                <a href="search.html">Ingredient Search</a><br>
+                <a href="#">Filter Types</a><br>
+            </div>
+            <div class="content">
+
+                <div class="flex-container" id="flexCont">
+                    <button class="btn active">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                    <button class="btn">Test</button>
+                </div>   
+            </div>
+            <div class="rightbar">
+                <h1>Test</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btnContainer = document.getElementById("flexCont");
+        var btns = btnContainer.getElementsByClassName("btn");
+
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+        });
+    }
+    </script>
+</body>
