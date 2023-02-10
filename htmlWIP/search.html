@@ -4,6 +4,9 @@
     <title>CAP food website</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript">
+        
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -22,11 +25,11 @@
             <div class="content">
                 <div class="searchbar">
                     <form method="POST">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit" id="btnSubmit"><i class="fa fa-search"></i></button>
+                        <input type="text" method="put" placeholder="Search.." id="search" value="">
+                        <button type="submit" id="btnSubmit"><i class="fa fa-search" onclick="sendTo()"></i></button>
                     </form>
                 </div>
-                <div></div>
+                <div><p id="info"></p></div>
             </div>
             <div class="rightbar">
                 <h1>Test</h1>
@@ -34,8 +37,36 @@
         </div>
     </div>
     <script>
-        document.getElementById("btnSubmit").onclick = function () {
-            location.href = "searching.html"
+        const button = document.getElementById("btnSubmit")
+        const data = document.getElementById("info")
+
+        function sendTo() {
+            var input = document.getElementById("search").value;
+            fetch("",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body:JSON.stringify(input)})
+                .then(res=>{
+                if(res.ok){
+                    return res.json()
+                }else{
+                    alert("something is wrong")
+                }
+            }).then(jsonResponse=>{
+            // Log the response data in the console
+                console.log(jsonResponse)
+            } 
+            ).catch((err) => console.error(err));
+
+        }
+
+        function returnParam(ingredient) {
+
+            return data;
         }
     </script>
 </body>
