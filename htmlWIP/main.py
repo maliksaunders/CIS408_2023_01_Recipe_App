@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+import requests
 
 #more than likely need to pip install flask
 # and pip install
@@ -117,3 +118,35 @@ def profile():
         return render_template('profile.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
+
+@app.route('/htmlWIP/search', methods=['POST'])
+def search():
+    # sets app id and app key for API
+    # sign up at https://developer.edamam.com/edamam-recipe-api for id and key, and insert here
+    app_id = "47d553e8"
+    app_key = "b749a2fd18806cba1583c944bf24a546"
+
+    # defines variables to be used for including API parameters
+    includeAppId = "app_id={}".format(app_id)
+    includeAppKey = "app_key={}".format(app_key)
+
+    # asks user to enter ingredient(s)
+    ingredient = request.form['search']
+    while ingredient == "":
+        ingredient = input("You must enter at least one or more ingredients. Try again: ")
+    # use split and join functions to enable selection of more than one ingredient
+    ingredients = "q={}".format(ingredient)
+    # test
+    # print(ingredients)
+    url = 'https://api.edamam.com/auto-complete?{}&{}&{}'.format(ingredients, includeAppId, includeAppKey)
+    recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
+
+    # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
+    results = requests.get(url)
+    data = results.json()
+
+    # Printing the results
+    # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
+    # based on user's choices/input
+    processed_text = recipeChoices.upper(),data.upper()
+    return processed_text
