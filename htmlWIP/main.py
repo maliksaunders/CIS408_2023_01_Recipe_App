@@ -139,7 +139,7 @@ def search():
     # test
     # print(ingredients)
     url = 'https://api.edamam.com/auto-complete?{}&{}&{}'.format(ingredients, includeAppId, includeAppKey)
-    recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
+    #recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
 
     # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
     results = requests.get(url)
@@ -148,5 +148,5 @@ def search():
     # Printing the results
     # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
     # based on user's choices/input
-    processed_text = recipeChoices.upper(),data.upper()
+    processed_text = data.upper()
     return processed_text
