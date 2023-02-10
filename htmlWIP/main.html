@@ -23,9 +23,9 @@
 
                 <div class="flex-container" id="flexCont">
                     <button class="btn active">Test</button>
-                    <button class="btn">Test</button>
-                    <button class="btn">Test</button>
-                    <button class="btn">Test</button>
+                    <button class="btn">Chicken</button>
+                    <button class="btn">Beef</button>
+                    <button class="btn">Pork</button>
                     <button class="btn">Test</button>
                     <button class="btn">Test</button>
                     <button class="btn">Test</button>
@@ -36,22 +36,57 @@
                     <button class="btn">Test</button>
                 </div>   
             </div>
-            <div class="rightbar">
-                <h1>Test</h1>
+            <div class="rightbar" id="rightbarV">
+                <h1 style="text-align: center;">Ingredients</h1>
+                <h1 id="ingredients"></h1>
             </div>
         </div>
     </div>
     <script>
+
         var btnContainer = document.getElementById("flexCont");
-        var btns = btnContainer.getElementsByClassName("btn");
+        var rightbarVar = document.getElementById("rightbarV");
+        var x = 0;
+
+
+        function createButton (txt) {
+            var closeBtn = document.createElement('button');
+            var sideTxt = document.createElement('h2');
+
+            closeBtn.setAttribute('class', 'closeBtn');
+            closeBtn.setAttribute('id', 'closeBtn' + x);
+            closeBtn.setAttribute('onclick', 'closeThis(' + x +')');
+            closeBtn.textContent = 'X';
+
+            sideTxt.setAttribute('class', 'sideTxt');
+            sideTxt.setAttribute('id', 'sideTxt' + x);
+            sideTxt.textContent = txt;
+            
+            rightbarVar.appendChild(closeBtn);
+            rightbarVar.appendChild(sideTxt);
+
+            x += 1;
+        }
+
+        function closeThis(num) {
+            var txtNum = "sideTxt" + num;
+            var btnNum = "closeBtn" + num;
+            const abc = document.getElementById(txtNum);
+            const def = document.getElementById(btnNum);
+            abc.remove();
+            def.remove();
+        }
 
         var btns = btnContainer.getElementsByClassName("btn");
         for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-        });
-    }
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+                var insertText = current[0].textContent;
+
+                createButton(insertText);
+            });
+        };
     </script>
 </body>
