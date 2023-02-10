@@ -119,7 +119,7 @@ def profile():
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
-@app.route('/htmlWIP/search', methods=['POST'])
+@app.route('/htmlWIP/search', methods=['POST','GET'])
 def search():
     # sets app id and app key for API
     # sign up at https://developer.edamam.com/edamam-recipe-api for id and key, and insert here
