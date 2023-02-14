@@ -26,7 +26,7 @@
                 <div class="searchbar">
                     <form method="POST">
                         <input type="text" method="put" placeholder="Search.." id="search" value="">
-                        <button type="submit" id="btnSubmit"><i class="fa fa-search" onclick="sendTo()"></i></button>
+                        <button type="submit" id="btnSubmit"><i class="fa fa-search" onclick="test()"></i></button>
                     </form>
                 </div>
                 <div><p id="info"></p></div>
@@ -39,6 +39,28 @@
     <script>
         const button = document.getElementById("btnSubmit")
         const data = document.getElementById("info")
+
+        function test() {
+            fetch('/seach', {
+            // Declare what type of data we're sending
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // Specify the method
+            method: 'POST',
+            // A JSON payload
+            body: JSON.stringify({"ingredient": "Chicken"})
+            })
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (text) {
+                console.log('POST response: ');
+                // Should be 'OK' if everything was successful
+                console.log(text);
+            });
+                data.textContent = text;
+        }
 
         function sendTo() {
             var input = document.getElementById("search").value;
