@@ -130,23 +130,36 @@ def search():
     includeAppId = "app_id={}".format(app_id)
     includeAppKey = "app_key={}".format(app_key)
 
-    # asks user to enter ingredient(s)
-    ingredient = request.form['search']
-    while ingredient == "":
-        ingredient = input("You must enter at least one or more ingredients. Try again: ")
-    # use split and join functions to enable selection of more than one ingredient
-    ingredients = "q={}".format(ingredient)
-    # test
-    # print(ingredients)
-    url = 'https://api.edamam.com/auto-complete?{}&{}&{}'.format(ingredients, includeAppId, includeAppKey)
-    #recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
+        # POST request
+    if request.method == 'POST':
+        print('Incoming..')
+        print(request.get_json())  # parse as JSON
+        return 'OK', 200
 
-    # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
-    results = requests.get(url)
-    data = results.json()
+    # GET request
+    else:
+        # asks user to enter ingredient(s)
+        ingredient = request.form['search']
+        while ingredient == "":
+            ingredient = input("You must enter at least one or more ingredients. Try again: ")
+        # use split and join functions to enable selection of more than one ingredient
+        ingredients = "q={}".format(ingredient)
+        # test
+        # print(ingredients)
+        url = 'https://api.edamam.com/auto-complete?{}&{}&{}'.format(ingredients, includeAppId, includeAppKey)
+        #recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
 
-    # Printing the results
-    # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
-    # based on user's choices/input
-    processed_text = data.upper()
-    return processed_text
+        # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
+        results = requests.get(url)
+        data = results.json()
+
+        # Printing the results
+        # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
+        # based on user's choices/input
+        processed_text = data.upper()
+        return processed_text
+
+@app.route('/test')
+def test_page():
+    # look inside `templates` and serve `index.html`
+    return render_template('search.html')
