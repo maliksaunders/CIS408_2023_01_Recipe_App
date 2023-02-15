@@ -183,7 +183,7 @@ def search():
         # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
         # based on user's choices/input
         processed_text = data.upper()
-        return processed_text
+    return render_template('search.html', msg=processed_text)
 
 @app.route('/htmlWIP/test')
 def test_page():
