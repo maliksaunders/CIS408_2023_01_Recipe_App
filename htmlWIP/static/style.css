@@ -38,7 +38,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     padding-top: 10px;
 }
 .sidenav a {
-    padding: 0px 8px 6px 16px;
+    padding: 0px 0px 6px 16px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
@@ -80,6 +80,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
   .btn {
     background-color: #f1f1f1;
+    min-width: 125px;
     width: 20%;
     margin: 2%;
     text-align: center;
@@ -121,11 +122,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 .rightbar {
     width: 22%;
     height: 75vh;
+    min-height: 100px;
+    min-width: 250px;
     margin-top: 2%;
     padding: .5% 1% .5% .5%;
     margin-right: 2%;
     color: #818181;
     background-color: #111;
+    overflow-y: scroll;
 }
 
 .gridContent {
@@ -151,6 +155,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     width: 100%;
     background-color: red;
     margin: 0px 0px 0px 0px;
+}
+
+.closeBtn {
+    margin-right: 8px;
+    padding: 10px 10px 10px 10px;
 }
 
 .textDiv {
