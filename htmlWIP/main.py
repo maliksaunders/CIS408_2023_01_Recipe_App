@@ -21,8 +21,8 @@ app.config['MYSQL_DB'] = 'pythonlogin'
 # Intialize MySQL
 mysql = MySQL(app)
 
-# http://localhost:5000/pythonlogin/ - the following will be our login page, which will use both GET and POST requests
-@app.route('/pythonlogin/', methods=['GET', 'POST'])
+# http://localhost:5000/htmlWIP/ - the following will be our login page, which will use both GET and POST requests
+@app.route('/htmlWIP/', methods=['GET', 'POST'])
 def login():
     # Output message if something goes wrong...
     msg = ''
@@ -51,7 +51,7 @@ def login():
     return render_template('index.html', msg='')
 
 # http://localhost:5000/python/logout - this will be the logout page
-@app.route('/pythonlogin/logout')
+@app.route('/htmlWIP/logout')
 def logout():
     # Remove session data, this will log the user out
    session.pop('loggedin', None)
@@ -61,7 +61,7 @@ def logout():
    return redirect(url_for('login'))
 
 # http://localhost:5000/pythinlogin/register - this will be the registration page, we need to use both GET and POST requests
-@app.route('/pythonlogin/register', methods=['GET', 'POST'])
+@app.route('/htmlWIP/register', methods=['GET', 'POST'])
 def register():
     # Output message if something goes wrong...
     msg = ''
@@ -96,7 +96,7 @@ def register():
     return render_template('register.html', msg=msg)
 
 # http://localhost:5000/pythinlogin/home - this will be the home page, only accessible for loggedin users
-@app.route('/pythonlogin/home')
+@app.route('/htmlWIP/home')
 def home():
     # Check if user is loggedin
     if 'loggedin' in session:
@@ -106,7 +106,7 @@ def home():
     return redirect(url_for('login'))
 
 # http://localhost:5000/pythinlogin/profile - this will be the profile page, only accessible for loggedin users
-@app.route('/pythonlogin/profile')
+@app.route('/htmlWIP/profile')
 def profile():
     # Check if user is loggedin
     if 'loggedin' in session:
@@ -125,7 +125,7 @@ def search():
     # sign up at https://developer.edamam.com/edamam-recipe-api for id and key, and insert here
     app_id = "47d553e8"
     app_key = "b749a2fd18806cba1583c944bf24a546"
-
+    
     # defines variables to be used for including API parameters
     includeAppId = "app_id={}".format(app_id)
     includeAppKey = "app_key={}".format(app_key)
@@ -159,7 +159,7 @@ def search():
         processed_text = data.upper()
         return processed_text
 
-@app.route('/test')
+@app.route('/htmlWIP/test')
 def test_page():
     # look inside `templates` and serve `index.html`
     return render_template('search.html')

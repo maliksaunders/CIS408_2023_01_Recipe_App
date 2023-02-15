@@ -10,10 +10,10 @@
 		<div class="register">
 			<h1>Register</h1>
 			<div class="links">
-				<a href="index.html">Login</a>
-				<a href="register.html" class="active">Register</a>
+				<a href="{{ url_for('login') }}">Login</a>
+				<a href="{{ url_for('register') }}" class="active">Register</a>
 			</div>
-			<form action="register.html" method="post" autocomplete="off">
+			<form action="{{ url_for('register') }}" method="post" autocomplete="off">
 				<label for="username">
 					<i class="fas fa-user"></i>
 				</label>

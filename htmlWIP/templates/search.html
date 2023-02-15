@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAP food website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript">
+        
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="topnav">
+        <a href="main.html">Home</a>
+        <a class="login" href="#signup">Sign Up</a>
+        <a class="login" href="#login">Login</a>
+    </div>
+    <div class="main">
+        <div class="flexbox">
+            <div class="sidenav">
+                <a href="search.html">Ingredient Search</a><br>
+                <a href="#">Filter Types</a><br>
+            </div>
+            <div class="content">
+                <div class="searchbar">
+                    <form method="POST">
+                        <input type="text" method="put" placeholder="Search.." id="search" value="">
+                        <button type="submit" id="btnSubmit"><i class="fa fa-search" onclick="test()"></i></button>
+                    </form>
+                </div>
+                <div><p id="info"></p></div>
+            </div>
+            <div class="rightbar">
+                <h1>Test</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        const button = document.getElementById("btnSubmit")
+        const data = document.getElementById("info")
+
+        function test() {
+            fetch('/seach', {
+            // Declare what type of data we're sending
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // Specify the method
+            method: 'POST',
+            // A JSON payload
+            body: JSON.stringify({"ingredient": "Chicken"})
+            })
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (text) {
+                console.log('POST response: ');
+                // Should be 'OK' if everything was successful
+                console.log(text);
+            });
+                data.textContent = text;
+        }
+
+        function sendTo() {
+            var input = document.getElementById("search").value;
+            fetch("",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body:JSON.stringify(input)})
+                .then(res=>{
+                if(res.ok){
+                    return res.json()
+                }else{
+                    alert("something is wrong")
+                }
+            }).then(jsonResponse=>{
+            // Log the response data in the console
+                console.log(jsonResponse)
+            } 
+            ).catch((err) => console.error(err));
+
+        }
+
+        function returnParam(ingredient) {
+
+            return data;
+        }
+    </script>
+</body>
