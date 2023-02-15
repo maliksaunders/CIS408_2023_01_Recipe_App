@@ -9,14 +9,14 @@
 </head>
 <body>
     <div class="topnav">
-        <a href="main.html">Home</a>
+        <a href="{{ url_for('main') }}">Home</a>
         <a class="login" href="#signup">Sign Up</a>
         <a class="login" href="index.html">Login</a>
     </div>
     <div class="main">
         <div class="flexbox">
             <div class="sidenav">
-                <a href="search.html">Ingredient Search</a><br>
+                <a href="{{ url_for('search') }}">Ingredient Search</a><br>
                 <a href="#">Filter Types</a><br>
             </div>
             <div class="content">
