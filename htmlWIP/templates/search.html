@@ -40,7 +40,10 @@
                 {% endif %}
                 </div>
             </div>
+            <p id="testing"></p>
             <div class="rightbar" id="rightbarV">
+                <h1 style="text-align: center;">Ingredients</h1>
+                <h1 id="ingredients"></h1>
             </div>
         </div>
     </div>
@@ -48,6 +51,9 @@
 
         var btnContainer = document.getElementById("flexCont");
         var rightbarVar = document.getElementById("rightbarV");
+        var ingrItems = document.getElementsByClassName("sideTxt");
+        var testing = document.getElementById("testing");
+        var arr = [];
         var x = 0;
 
 
@@ -98,5 +104,19 @@
                 createButton(insertText);
             });
         }
+        window.addEventListener("beforeunload", function(e){
+            for (var i = 0; i < ingrItems.length; i++) {
+                arr.push(ingrItems.item(i).textContent);
+            }
+            localStorage.setItem("ingredients", JSON.stringify(arr));
+        }, false);
+
+        window.onload = function() {
+            var bn123 = JSON.parse(localStorage.getItem('ingredients'));
+            for (var i = 0; i < bn123.length; i++) {
+                testing.textContent = JSON.stringify(bn123);
+            }
+        }
+
     </script>
 </body>
