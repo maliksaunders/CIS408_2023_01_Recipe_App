@@ -10,8 +10,8 @@
 <body>
     <div class="topnav">
         <a href="{{ url_for('main') }}">Home</a>
-        <a class="login" href="#signup">Sign Up</a>
-        <a class="login" href="index.html">Login</a>
+        <a class="login" href="{{ url_for('register') }}">Sign Up</a>
+        <a class="login" href="{{ url_for('login') }}">Login</a>
     </div>
     <div class="main">
         <div class="flexbox">

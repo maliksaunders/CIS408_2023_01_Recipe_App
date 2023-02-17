@@ -3,6 +3,7 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 import requests
+import json
 
 #more than likely need to pip install flask
 # and pip install
@@ -171,12 +172,17 @@ def search():
 
         # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
         results = requests.get(url)
-        data = results.json()
+        datas = json.loads(results.text)
+        data_list = []
+        for data in datas:
+            print(data)
+            data_list.append(data)
+
 
         # Printing the results
         # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
         # based on user's choices/input
-        result = data
+        result = data_list
     elif request.method == 'POST':
         # Form is empty... (no POST data)
         result = 'Please fill out the form!'

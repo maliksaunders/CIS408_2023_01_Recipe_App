@@ -12,14 +12,14 @@
 </head>
 <body>
     <div class="topnav">
-        <a href="main.html">Home</a>
-        <a class="login" href="#signup">Sign Up</a>
-        <a class="login" href="#login">Login</a>
+        <a href="{{ url_for('main') }}">Home</a>
+        <a class="login" href="{{ url_for('register') }}">Sign Up</a>
+        <a class="login" href="{{ url_for('login') }}">Login</a>
     </div>
     <div class="main">
         <div class="flexbox">
             <div class="sidenav">
-                <a href="search.html">Ingredient Search</a><br>
+                <a href="{{ url_for('search') }}">Ingredient Search</a><br>
                 <a href="#">Filter Types</a><br>
             </div>
             <div class="content">
@@ -39,7 +39,9 @@
             </div>
             <div class="rightbar">
                 {% if result %}
-                <h1>{{ result }}!</h1>
+                    {% for item in result %}
+                    <button >{{item}}</button> 
+                    {% endfor %}                  
                 {% else %}
                 <h1>No Results</h1>
                 {% endif %}
@@ -47,58 +49,5 @@
         </div>
     </div>
     <script>
-        const button = document.getElementById("btnSubmit")
-        const data = document.getElementById("info")
-
-        function test() {
-            fetch('/seach', {
-            // Declare what type of data we're sending
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            // Specify the method
-            method: 'POST',
-            // A JSON payload
-            body: JSON.stringify({"ingredient": "Chicken"})
-            })
-            .then(function (response) {
-                return response.text();
-            })
-            .then(function (text) {
-                console.log('POST response: ');
-                // Should be 'OK' if everything was successful
-                console.log(text);
-            });
-                data.textContent = text;
-        }
-
-        function sendTo() {
-            var input = document.getElementById("search").value;
-            fetch("",
-            {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body:JSON.stringify(input)})
-                .then(res=>{
-                if(res.ok){
-                    return res.json()
-                }else{
-                    alert("something is wrong")
-                }
-            }).then(jsonResponse=>{
-            // Log the response data in the console
-                console.log(jsonResponse)
-            } 
-            ).catch((err) => console.error(err));
-
-        }
-
-        function returnParam(ingredient) {
-
-            return data;
-        }
     </script>
 </body>
