@@ -151,19 +151,13 @@ def search():
     # sign up at https://developer.edamam.com/edamam-recipe-api for id and key, and insert here
     app_id = "47d553e8"
     app_key = "b749a2fd18806cba1583c944bf24a546"
-    
+    result=''
     # defines variables to be used for including API parameters
     includeAppId = "app_id={}".format(app_id)
     includeAppKey = "app_key={}".format(app_key)
 
         # POST request
-    if request.method == 'POST':
-        print('Incoming..')
-        print(request.get_json())  # parse as JSON
-        return 'OK', 200
-
-    # GET request
-    else:
+    if request.method == 'POST' and 'search' in request.form:
         # asks user to enter ingredient(s)
         ingredient = request.form['search']
         while ingredient == "":
@@ -182,8 +176,11 @@ def search():
         # Printing the results
         # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
         # based on user's choices/input
-        processed_text = data.upper()
-        return processed_text
+        result = data
+    elif request.method == 'POST':
+        # Form is empty... (no POST data)
+        result = 'Please fill out the form!'
+    return render_template('search.html', result = result)
 
 @app.route('/htmlWIP/test')
 def test_page():

@@ -23,16 +23,26 @@
                 <a href="#">Filter Types</a><br>
             </div>
             <div class="content">
-                <div class="searchbar">
+                <!-- <div class="searchbar">
                     <form method="POST">
                         <input type="text" method="put" placeholder="Search.." id="search" value="">
                         <button type="submit" id="btnSubmit"><i class="fa fa-search" onclick="test()"></i></button>
+                    </form>
+                </div> -->
+                <div class="searchbar">
+                    <form action="{{ url_for('search') }}" method="post" autocomplete="off">
+                        <input type="text" name="search" placeholder="Search.." id="search" required>
+                        <input type="submit" value="Search">
                     </form>
                 </div>
                 <div><p id="info"></p></div>
             </div>
             <div class="rightbar">
-                <h1>Test</h1>
+                {% if result %}
+                <h1>{{ result }}!</h1>
+                {% else %}
+                <h1>No Results</h1>
+                {% endif %}
             </div>
         </div>
     </div>
