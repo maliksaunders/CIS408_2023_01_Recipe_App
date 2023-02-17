@@ -4,7 +4,7 @@
     <title>CAP food website</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript">
+    <script type="text/javascript" src="script.js">
         
     </script>
     <meta charset="UTF-8">
@@ -29,19 +29,74 @@
                         <input type="submit" value="Search">
                     </form>
                 </div>
-                <div><p id="info"></p></div>
-            </div>
-            <div class="rightbar">
-                {% if result %}
+                <div class="flex-container" id="flexCont">
+                    <button hidden class="btn active"></button>
+                    {% if result %}
                     {% for item in result %}
-                    <button >{{item}}</button> 
+                    <button class="btn">{{item}}</button> 
                     {% endfor %}                  
                 {% else %}
                 <h1>No Results</h1>
                 {% endif %}
+                </div>
+            </div>
+            <div class="rightbar" id="rightbarV">
             </div>
         </div>
     </div>
     <script>
+
+        var btnContainer = document.getElementById("flexCont");
+        var rightbarVar = document.getElementById("rightbarV");
+        var x = 0;
+
+
+        function createButton (txt) {
+            var closeBtn = document.createElement('button');
+            var sideTxt = document.createElement('h2');
+            var brCreate = document.createElement('div');
+
+            closeBtn.setAttribute('class', 'closeBtn');
+            closeBtn.setAttribute('id', 'closeBtn' + x);
+            closeBtn.setAttribute('onclick', 'closeThis(' + x +')');
+            closeBtn.setAttribute('style', 'display: inline-block');
+            closeBtn.textContent = 'X';
+
+            sideTxt.setAttribute('class', 'sideTxt');
+            sideTxt.setAttribute('id', 'sideTxt' + x);
+            sideTxt.setAttribute('style', 'display: inline-block');
+            sideTxt.textContent = txt;
+
+            brCreate.setAttribute('style', 'display: block');
+            brCreate.textContent = " ";
+            
+            rightbarVar.appendChild(closeBtn);
+            rightbarVar.appendChild(sideTxt);
+            rightbarVar.append(brCreate);
+
+            x += 1;
+        }
+
+        function closeThis(num) {
+            var txtNum = "sideTxt" + num;
+            var btnNum = "closeBtn" + num;
+            const abc = document.getElementById(txtNum);
+            const def = document.getElementById(btnNum);
+            abc.remove();
+            def.remove();
+        }
+
+        var btns = btnContainer.getElementsByClassName("btn");
+
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+                var insertText = current[0].textContent;
+
+                createButton(insertText);
+            });
+        }
     </script>
 </body>
