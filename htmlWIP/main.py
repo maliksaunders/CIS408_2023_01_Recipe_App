@@ -188,7 +188,45 @@ def search():
         result = 'Please fill out the form!'
     return render_template('search.html', result = result)
 
-@app.route('/htmlWIP/test')
-def test_page():
-    # look inside `templates` and serve `index.html`
-    return render_template('search.html')
+@app.route('/htmlWIP/search')
+def recipesearch():
+    app_id = "739875d8"
+    app_key = "d7176dfe27ce3cda845f772b28d7e106"
+
+    recipe=''
+    # defines variables to be used for including API parameters
+    includeAppId = "app_id={}".format(app_id)
+    includeAppKey = "app_key={}".format(app_key)
+
+    if request.method == 'POST' and 'sideTxt' in request.form:
+        # asks user to enter ingredient(s)
+        ingredient = request.form['sideTxt']
+        while ingredient == "":
+            ingredient = input("You must enter at least one or more ingredients. Try again: ")
+        # use split and join functions to enable selection of more than one ingredient
+        ingredients = "q={}".format(ingredient)
+        # test
+        # print(ingredients)
+        url = 'https://api.edamam.com/search?{}&{}&{}'.format(ingredients, includeAppId, includeAppKey)
+        #recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
+
+        # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
+        results = requests.get(url)
+        datas = json.loads(results.text)
+        data_list = []
+        for data in datas:
+            print(data)
+            data_list.append(data)
+
+
+        # Printing the results
+        # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
+        # based on user's choices/input
+        recipe = data_list
+    elif request.method == 'POST':
+        # Form is empty... (no POST data)
+        recipe = 'Please fill out the form!'
+    return render_template('search.html', result = recipe)
+   
+
+
