@@ -44,13 +44,15 @@
             <div class="rightbar" id="rightbarV">
                 <h1 style="text-align: center;">Ingredients</h1>
                 <h1 id="ingredients"></h1>
+                <div id="ingrDiv"></div>
+                <div class="btmDiv"><button class="submitBtn" id="submitBtn">Search</button></div>
             </div>
         </div>
     </div>
     <script>
 
         var btnContainer = document.getElementById("flexCont");
-        var rightbarVar = document.getElementById("rightbarV");
+        var rightbarVar = document.getElementById("ingrDiv");
         var ingrItems = document.getElementsByClassName("sideTxt");
         var testing = document.getElementById("testing");
         var arr = [];
@@ -104,6 +106,7 @@
                 createButton(insertText);
             });
         }
+        
         window.addEventListener("beforeunload", function(e){
             for (var i = 0; i < ingrItems.length; i++) {
                 arr.push(ingrItems.item(i).textContent);
@@ -112,9 +115,9 @@
         }, false);
 
         window.onload = function() {
-            var bn123 = JSON.parse(localStorage.getItem('ingredients'));
-            for (var i = 0; i < bn123.length; i++) {
-                testing.textContent = JSON.stringify(bn123);
+            var ingArr = JSON.parse(localStorage.getItem('ingredients'));
+            for (i = 0; i < ingArr.length; i++) {
+                createButton(ingArr[i]);
             }
         }
 

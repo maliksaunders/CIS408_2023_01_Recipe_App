@@ -79,7 +79,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     margin-top: 2%;
   }
   
-  .btn {
+.btn {
     background-color: #f1f1f1;
     min-width: 125px;
     width: 20%;
@@ -88,16 +88,22 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     line-height: 20vh;
     font-size: 30px;
     overflow: hidden;
-  }
-  .btn:hover {
+}
+.btn:hover {
     background-color: #818181;
-  }
-  .btn:active {
+}
+.btn:active {
     background-color: skyblue;
-  }
-  .active {
+}
+.active {
     background-color: skyblue;
-  }
+}
+
+.submitBtn {
+    text-align: center;
+    margin-left: 40%;
+    bottom: 0px;
+}
 
 .searchbar input[type=text] {
     width: 80%;
