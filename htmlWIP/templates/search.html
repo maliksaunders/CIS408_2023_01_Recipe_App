@@ -45,7 +45,7 @@
                 <h1 style="text-align: center;">Ingredients</h1>
                 <h1 id="ingredients"></h1>
                 <div id="ingrDiv"></div>
-                <div class="btmDiv"><button class="submitBtn" id="submitBtn">Search</button></div>
+                <div class="btmDiv"><button class="submitBtn" id="submitBtn" onclick="saveIngr()">Search</button></div>
             </div>
         </div>
     </div>
@@ -94,6 +94,24 @@
             def.remove();
         }
 
+        function saveIngr() {
+            document.cookie = "ingredients="
+            for (var i = 0; i < ingrItems.length; i++) {
+                document.cookie += "," + (ingrItems.item(i).textContent);
+            }
+        }
+
+        function onloadButton() {
+            var ingArr = [];
+            var text = document.cookie.split("=")[1];
+            ingArr = (text.split(','));
+            for (i = 0; i < ingArr.length; i++) {
+                if (ingArr[i] != "") {
+                    createButton(ingArr[i]); 
+                }
+            }
+        }
+
         var btns = btnContainer.getElementsByClassName("btn");
 
         for (var i = 0; i < btns.length; i++) {
@@ -108,17 +126,11 @@
         }
         
         window.addEventListener("beforeunload", function(e){
-            for (var i = 0; i < ingrItems.length; i++) {
-                arr.push(ingrItems.item(i).textContent);
-            }
-            localStorage.setItem("ingredients", JSON.stringify(arr));
+            saveIngr();
         }, false);
 
         window.onload = function() {
-            var ingArr = JSON.parse(localStorage.getItem('ingredients'));
-            for (i = 0; i < ingArr.length; i++) {
-                createButton(ingArr[i]);
-            }
+            onloadButton();
         }
 
     </script>
