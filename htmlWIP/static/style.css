@@ -103,16 +103,28 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     bottom: 0%;
 }
 
+.header {
+    text-align: center;
+    width:100%;
+    font-size: 4vmin;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
 .btn {
     background-color: #f1f1f1;
     min-width: 100px;
     width: 20%;
-    height: 15vh;
+    min-height: 150px;
+    height: auto;
     margin: 2%;
     text-align: center;
     line-height: 5vh;
-    font-size: 3vmin;
-    overflow: hidden;
+    font-size: 2vmin;
+    overflow: inherit;
 }
 .btn:hover {
     background-color: #818181;
