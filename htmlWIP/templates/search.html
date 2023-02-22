@@ -43,7 +43,8 @@
                 <h1 style="text-align: center;">Ingredients</h1>
                 <h1 id="ingredients"></h1>
                 <div id="ingrDiv"></div>
-                <div class="btmDiv"><button class="submitBtn" id="submitBtn" onclick="saveIngr()">Search</button></div>
+                <br>
+                <button class="submitBtn" id="submitBtn">Search</button>
             </div>
         </div>
     </div>
@@ -52,6 +53,7 @@
         var btnContainer = document.getElementById("flexCont");
         var rightbarVar = document.getElementById("ingrDiv");
         var ingrItems = document.getElementsByClassName("sideTxt");
+        var submitBtn = document.getElementById("submitBtn");
         var testing = document.getElementById("testing");
         var arr = [];
         var x = 0;
@@ -68,6 +70,12 @@
                 createButton(insertText);
             });
         }
+
+        submitBtn.addEventListener("click", function () {
+                saveIngr();
+                createButton("testing");
+            }
+        )
         
         window.addEventListener("beforeunload", function(e){
             saveIngr();
