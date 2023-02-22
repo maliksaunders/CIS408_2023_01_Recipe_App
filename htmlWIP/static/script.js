@@ -43,8 +43,8 @@ function closeThis(num) {
 }
 
 function saveIngr() {
-    document.cookie = "ingredients="
-    for (var i = 0; i < ingrItems.length; i++) {
+    document.cookie = "ingredients=" + ingrItems.item(0).textContent;
+    for (var i = 1; i < ingrItems.length; i++) {
         document.cookie += "," + (ingrItems.item(i).textContent);
     }
 }
