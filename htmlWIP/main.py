@@ -217,6 +217,7 @@ def recipesearch():
             print('================================================================================')
             print('Sorry, no recipes found!')
         recipeList = []   
+        linkList = []
         # loops through results again, where more than 0 results found...
         with open('CSVFolder/searchitems.csv', 'a', newline='') as file:
             writer = csv.writer(file)
@@ -235,10 +236,11 @@ def recipesearch():
                     time = round(int(recipe['totalTime']))
                     # prints recipe name, web link, servings, and nutrition info
                     recipeList.append(recipeLabel)
+                    linkList.append(webLink)
                     writer.writerow([username,recipeLabel, webLink, str(calories),str(fat_quantity),str(protein_quantity),str(y),str(time)])
                 else:
                     pass         
-        return render_template('search.html', result2 = recipeList)
+        return render_template('search.html', result2 = recipeList, result3 = linkList, len = len(recipeList))
     return redirect(url_for('login'))
    
 

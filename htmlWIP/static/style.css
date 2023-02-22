@@ -103,6 +103,34 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     bottom: 0%;
 }
 
+.btn {
+    background-color: #f1f1f1;
+    min-width: 100px;
+    width: 20%;
+    height: 15vh;
+    margin: 2%;
+    text-align: center;
+    line-height: 5vh;
+    font-size: 3vmin;
+    overflow: hidden;
+}
+.btn:hover {
+    background-color: #818181;
+}
+.btn:active {
+    background-color: skyblue;
+}
+.active {
+    background-color: skyblue;
+}
+
+.btmDiv {
+    position: absolute;
+    bottom: 0%;
+}
+
+
+
 .searchbar input[type=text] {
     width: 80%;
     padding: 6px;

@@ -39,8 +39,8 @@
                 <div class="flex-container" id="flexCont2">
                     <button hidden class="btn active"></button>
                     {% if result2 %}
-                    {% for item in result2 %}
-                    <button class="btn">{{item}}</button> 
+                    {% for i in range (0, len) %}
+                    <button class="btn" onclick="window.open('{{result3[i]}}', '_blank');">{{result2[i]}}</button> 
                     {% endfor %}                 
                     {% else %}
                     <h1>No Results</h1>
