@@ -17,24 +17,27 @@
         <div class="flexbox">
             <div class="sidenav">
                 <a href="{{ url_for('search') }}">Ingredient Search</a><br>
-                <a href="#">Filter Types</a><br>
             </div>
             <div class="content">
 
-                <div class="flex-container" id="flexCont">
-                    <button class="btn active">Test</button>
-                    <button class="btn">Chicken</button>
-                    <button class="btn">Beef</button>
-                    <button class="btn">Pork</button>
-                    <button class="btn">Chicken Pot Pie</button>
-                    <button class="btn">Test</button>
-                    <button class="btn">Test</button>
-                    <button class="btn">Test</button>
-                    <button class="btn">Test</button>
-                    <button class="btn">Test</button>
-                    <button class="btn">Test</button>
-                    <button class="btn">Test</button>
-                </div>   
+                <h2>Profile Page</h2>
+                <div>
+                    <p>Your account details are below:</p>
+                    <table>
+                        <tr>
+                            <td>Username:</td>
+                            <td>{{accUser}}</td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td>{{accPass}}</td>
+                        </tr>
+                        <tr>
+                            <td>Passed Searched recipes</td>
+                            
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="rightbar" id="rightbarV">
                 <h1 style="text-align: center;">Ingredients</h1>

@@ -112,7 +112,9 @@ def main():
     msg = ''
     if 'loggedin' in session:
         #Show the login form with message (if any)
-        return render_template('main.html', msg='')
+        username = session['username']
+        password = session['password']
+        return render_template('main.html',accUser = username, accPass = password,msg='')
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 # http://localhost:5000/pythinlogin/profile - this will be the profile page, only accessible for loggedin users
