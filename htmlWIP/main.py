@@ -185,7 +185,7 @@ def recipesearch():
 
     if request.method == 'POST' and 'sideTxt' in request.form:
         # asks user to enter ingredient(s)
-        ingredient = request.form['sideTxt']
+        ingredient = request.cookies.get('ingredients')
         while ingredient == "":
             ingredient = input("You must enter at least one or more ingredients. Try again: ")
         # use split and join functions to enable selection of more than one ingredient
