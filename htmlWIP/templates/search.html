@@ -8,11 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body class="loggedin">
     <div class="topnav">
         <a href="{{ url_for('main') }}">Home</a>
-        <a class="login" href="{{ url_for('register') }}">Sign Up</a>
-        <a class="login" href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('logout') }}"></i>Logout</a>
     </div>
     <div class="main">
         <div class="flexbox">
