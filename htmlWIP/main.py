@@ -173,7 +173,7 @@ def search():
         return render_template('search.html', result = result)
     return redirect(url_for('login'))
 
-@app.route('/htmlWIP/search', methods=['GET','POST'])
+@app.route('/htmlWIP/recipesearch', methods=['GET','POST'])
 def recipesearch():
     app_id = "739875d8"
     app_key = "d7176dfe27ce3cda845f772b28d7e106"
@@ -187,7 +187,7 @@ def recipesearch():
         # asks user to enter ingredient(s)
         ingredient = request.cookies.get('ingredients')
         while ingredient == "":
-            ingredient = input("You must enter at least one or more ingredients. Try again: ")
+            recipe = 'No ingredients entered'
         # use split and join functions to enable selection of more than one ingredient
         ingredients = "q={}".format(ingredient)
         # test
