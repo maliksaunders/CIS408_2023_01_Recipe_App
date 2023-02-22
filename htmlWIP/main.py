@@ -207,11 +207,11 @@ def recipesearch():
         # Printing the results
         # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
         # based on user's choices/input
-        result = data_list
+        recipe = data_list
     elif request.method == 'POST':
         # Form is empty... (no POST data)
-        result = 'Please fill out the form!'
-    return render_template('search.html', result = result)
+        recipe = 'Please fill out the form2!'
+    return render_template('search.html', result2 = recipe)
    
 
 

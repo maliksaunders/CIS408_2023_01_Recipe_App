@@ -36,6 +36,16 @@
                 <h1>No Results</h1>
                 {% endif %}
                 </div>
+                <div class="flex-container" id="flexCont2">
+                    <button hidden class="btn active"></button>
+                    {% if result2 %}
+                    {% for item in result2 %}
+                    <h1>{{item}}</h1> 
+                    {% endfor %}                  
+                {% else %}
+                <h1>No Results</h1>
+                {% endif %}
+                </div>
             </div>
             <p id="testing"></p>
             <div class="rightbar" id="rightbarV">
@@ -43,8 +53,8 @@
                 <h1 id="ingredients"></h1>
                 <div id="ingrDiv"></div>
                 <br>
-                <form>
-                    <input type="submit" class="submitBtn" id="submitBtn" value="Search">
+                <form action="{{ url_for('recipesearch') }}" method="post">
+                    <input type="submit" class="submitBtn" id="submitBtn" value="search">
                 </form>
             </div>
         </div>
