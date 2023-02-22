@@ -24,8 +24,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     color: white;
 }
 
-
-
 .sidenav {
     height: 100vh;
     white-space: nowrap;
@@ -81,12 +79,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
 .btn {
     background-color: #f1f1f1;
-    min-width: 125px;
+    min-width: 100px;
     width: 20%;
+    height: 15vh;
     margin: 2%;
     text-align: center;
-    line-height: 20vh;
-    font-size: 30px;
+    line-height: 5vh;
+    font-size: 3vmin;
     overflow: hidden;
 }
 .btn:hover {
@@ -99,10 +98,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     background-color: skyblue;
 }
 
-.submitBtn {
-    text-align: center;
-    margin-left: 40%;
-    bottom: 0px;
+.btmDiv {
+    position: absolute;
+    bottom: 0%;
 }
 
 .searchbar input[type=text] {
@@ -127,6 +125,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
 
 .rightbar {
+    position: relative;
     width: 22%;
     height: 75vh;
     min-height: 100px;
@@ -137,6 +136,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     color: #818181;
     background-color: #111;
     overflow-y: scroll;
+}
+.submitBtn {
+    text-align: center;
+    font-size: 1.5vw;
+    width: 50%;
+    margin-left: 25%;
+    bottom: 0px;
+    position: relative;
 }
 
 .gridContent {

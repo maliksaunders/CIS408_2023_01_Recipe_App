@@ -4,9 +4,7 @@
     <title>CAP food website</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="script.js">
-        
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -45,7 +43,8 @@
                 <h1 style="text-align: center;">Ingredients</h1>
                 <h1 id="ingredients"></h1>
                 <div id="ingrDiv"></div>
-                <div class="btmDiv"><button class="submitBtn" id="submitBtn">Search</button></div>
+                <br>
+                <button class="submitBtn" id="submitBtn">Search</button>
             </div>
         </div>
     </div>
@@ -54,45 +53,10 @@
         var btnContainer = document.getElementById("flexCont");
         var rightbarVar = document.getElementById("ingrDiv");
         var ingrItems = document.getElementsByClassName("sideTxt");
+        var submitBtn = document.getElementById("submitBtn");
         var testing = document.getElementById("testing");
         var arr = [];
         var x = 0;
-
-
-        function createButton (txt) {
-            var closeBtn = document.createElement('button');
-            var sideTxt = document.createElement('h2');
-            var brCreate = document.createElement('div');
-
-            closeBtn.setAttribute('class', 'closeBtn');
-            closeBtn.setAttribute('id', 'closeBtn' + x);
-            closeBtn.setAttribute('onclick', 'closeThis(' + x +')');
-            closeBtn.setAttribute('style', 'display: inline-block');
-            closeBtn.textContent = 'X';
-
-            sideTxt.setAttribute('class', 'sideTxt');
-            sideTxt.setAttribute('id', 'sideTxt' + x);
-            sideTxt.setAttribute('style', 'display: inline-block');
-            sideTxt.textContent = txt;
-
-            brCreate.setAttribute('style', 'display: block');
-            brCreate.textContent = " ";
-            
-            rightbarVar.appendChild(closeBtn);
-            rightbarVar.appendChild(sideTxt);
-            rightbarVar.append(brCreate);
-
-            x += 1;
-        }
-
-        function closeThis(num) {
-            var txtNum = "sideTxt" + num;
-            var btnNum = "closeBtn" + num;
-            const abc = document.getElementById(txtNum);
-            const def = document.getElementById(btnNum);
-            abc.remove();
-            def.remove();
-        }
 
         var btns = btnContainer.getElementsByClassName("btn");
 
@@ -106,19 +70,19 @@
                 createButton(insertText);
             });
         }
+
+        submitBtn.addEventListener("click", function () {
+                saveIngr();
+                createButton("testing");
+            }
+        )
         
         window.addEventListener("beforeunload", function(e){
-            for (var i = 0; i < ingrItems.length; i++) {
-                arr.push(ingrItems.item(i).textContent);
-            }
-            localStorage.setItem("ingredients", JSON.stringify(arr));
+            saveIngr();
         }, false);
 
         window.onload = function() {
-            var ingArr = JSON.parse(localStorage.getItem('ingredients'));
-            for (i = 0; i < ingArr.length; i++) {
-                createButton(ingArr[i]);
-            }
+            onloadButton();
         }
 
     </script>
