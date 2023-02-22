@@ -11,7 +11,7 @@
 <body class="loggedin">
     <div class="topnav">
         <a href="{{ url_for('main') }}">Home</a>
-        <a href="{{ url_for('logout') }}"></i>Logout</a>
+        <a class="login" href="{{ url_for('logout') }}"></i>Logout</a>
     </div>
     <div class="main">
         <div class="flexbox">
@@ -72,7 +72,6 @@
 
         submitBtn.addEventListener("click", function () {
                 saveIngr();
-                createButton("testing");
             }
         )
         
