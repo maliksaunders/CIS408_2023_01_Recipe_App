@@ -40,11 +40,11 @@
                     <button hidden class="btn active"></button>
                     {% if result2 %}
                     {% for item in result2 %}
-                    <h1>{{item}}</h1> 
-                    {% endfor %}                  
-                {% else %}
-                <h1>No Results</h1>
-                {% endif %}
+                    <button class="btn">{{item}}</button> 
+                    {% endfor %}                 
+                    {% else %}
+                    <h1>No Results</h1>
+                    {% endif %}
                 </div>
             </div>
             <p id="testing"></p>
@@ -53,7 +53,7 @@
                 <h1 id="ingredients"></h1>
                 <div id="ingrDiv"></div>
                 <br>
-                <form action="{{ url_for('recipesearch') }}" method="post">
+                <form action="{{ url_for('recipesearch') }}" method="get">
                     <input type="submit" class="submitBtn" id="submitBtn" value="search">
                 </form>
             </div>

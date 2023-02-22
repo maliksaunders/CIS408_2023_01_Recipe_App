@@ -183,35 +183,60 @@ def recipesearch():
     includeAppId = "app_id={}".format(app_id)
     includeAppKey = "app_key={}".format(app_key)
 
-    if request.method == 'POST' and 'submitBtn' in request.form:
-        # asks user to enter ingredient(s)
-        ingredient = request.cookies.get('ingredients')
-        while ingredient == "":
-            recipe = 'No ingredients entered'
-        # use split and join functions to enable selection of more than one ingredient
-        ingredients = "q={}".format(ingredient)
-        # test
-        # print(ingredients)
-        url = 'https://api.edamam.com/search?{}&{}&{}'.format(ingredients, includeAppId, includeAppKey)
-        #recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
+    ingredient = request.cookies.get('ingredients')
 
-        # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
-        results = requests.get(url)
-        datas = json.loads(results.text)
-        data_list = []
-        for data in datas:
-            print(data)
-            data_list.append(data)
+    # use split and join functions to enable selection of more than one ingredient
+    components = ingredient.split()
+    items = ",+".join(components) or "and+".join(components) or " +".join(components)
+    ingredients = "ingredients=" + items
+    includeIngredients = "q={}".format(ingredients)
+    # test
+    # print(ingredients)
+    url = 'https://api.edamam.com/search?{}&{}&{}'.format(includeIngredients, includeAppId, includeAppKey)
+    #recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
+
+    # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
+    results = requests.get(url)
+    datas = results.json()
+    results = datas['hits']
+
+    # loops through results and adds 1 on each iteration (to count how many results found)
+    count = 0
+    for result in results:
+        recipe = result['recipe']
+        if int((recipe['calories']) / recipe['yield']):
+            count = count + 1
+        
+    # if more than 0 results found, prints 'Here are your recipes'
+    if count > 0:
+        print('Here are your recipes: ')
+    # else, if less than 0 results, prints 'Sorry, no recipes found' and the program ends here
+    else:
+        print('================================================================================')
+        print('Sorry, no recipes found!')
+    recipeList = []   
+    # loops through results again, where more than 0 results found...
+    for result in results:
+        recipe = result['recipe']
+        if int((recipe['calories']) / recipe['yield']) and count > 0:
+            # define recipe info variables, i.e. name, web link, servings, nutrition, total time, and ingredients list
+            recipeLabel = recipe['label']
+            webLink = recipe['url']
+            calories = round(int(recipe['calories'] / recipe['yield']))
+            fat = recipe['totalNutrients']['FAT']
+            fat_quantity = round(int(fat['quantity'] / recipe['yield']))
+            protein = recipe['totalNutrients']['PROCNT']
+            protein_quantity = round(int(protein['quantity'] / recipe['yield']))
+            y = round(int(recipe['yield']))
+            time = round(int(recipe['totalTime']))
+            # prints recipe name, web link, servings, and nutrition info
+            recipeList.append(recipeLabel)
+        else:
+            pass
 
 
-        # Printing the results
-        # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
-        # based on user's choices/input
-        recipe = data_list
-    elif request.method == 'POST':
-        # Form is empty... (no POST data)
-        recipe = 'Please fill out the form2!'
-    return render_template('search.html', result2 = recipe)
+        
+    return render_template('search.html', result2 = recipeList)
    
 
 
