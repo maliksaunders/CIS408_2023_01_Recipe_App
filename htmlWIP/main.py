@@ -173,7 +173,7 @@ def search():
         return render_template('search.html', result = result)
     return redirect(url_for('login'))
 
-@app.route('/htmlWIP/search')
+@app.route('/htmlWIP/search', methods=['GET','POST'])
 def recipesearch():
     app_id = "739875d8"
     app_key = "d7176dfe27ce3cda845f772b28d7e106"
@@ -183,7 +183,7 @@ def recipesearch():
     includeAppId = "app_id={}".format(app_id)
     includeAppKey = "app_key={}".format(app_key)
 
-    if request.method == 'POST' and 'sideTxt' in request.form:
+    if request.method == 'POST' and 'submitBtn' in request.form:
         # asks user to enter ingredient(s)
         ingredient = request.cookies.get('ingredients')
         while ingredient == "":
@@ -207,11 +207,11 @@ def recipesearch():
         # Printing the results
         # prints 'You've searched for {cuisineReq}, {dietReq} recipes, using {ingredient(s)}'
         # based on user's choices/input
-        recipe = data_list
+        result = data_list
     elif request.method == 'POST':
         # Form is empty... (no POST data)
-        recipe = 'Please fill out the form!'
-    return render_template('search.html', result = recipe)
+        result = 'Please fill out the form!'
+    return render_template('search.html', result = result)
    
 
 
