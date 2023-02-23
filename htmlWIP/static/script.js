@@ -40,6 +40,7 @@ function closeThis(num) {
     const def = document.getElementById(btnNum);
     abc.remove();
     def.remove();
+    document.cookie = "ingredients=";
 }
 
 function saveIngr() {
