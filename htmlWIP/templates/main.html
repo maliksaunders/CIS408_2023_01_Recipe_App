@@ -10,7 +10,8 @@
 </head>
 <body class="loggedin">
     <div class="topnav">
-        <a href="{{ url_for('main') }}">Home</a>
+        <a href="{{ url_for('search') }}">Home</a>
+        <a href="{{ url_for('main') }}">Profile</a>
         <a class="login" href="{{ url_for('logout') }}"></i>Logout</a>
     </div>
     <div class="main">
@@ -33,7 +34,7 @@
                             <td>{{accPass}}</td>
                         </tr>
                         <tr>
-                            <td>Passed Searched recipes</td>
+                            <td>Past Searched recipes</td>
                             
                         </tr>
                     </table>

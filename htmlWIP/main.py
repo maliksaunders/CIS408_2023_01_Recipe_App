@@ -38,7 +38,7 @@ def login():
             session['loggedin'] = True
             session['username'] = username
             session['password'] = password
-            return redirect(url_for('main'))
+            return redirect(url_for('search'))
         else:
             msg = 'Username or password is Incorrect!'
     #Show the login form with message (if any)
@@ -102,7 +102,7 @@ def home():
     # Check if user is loggedin
     if 'loggedin' in session:
         # User is loggedin show them the home page
-        return render_template('home.html', username=session['username'])
+        return render_template('search.html', username=session['username'])
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
