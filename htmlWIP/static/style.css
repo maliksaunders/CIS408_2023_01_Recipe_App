@@ -132,6 +132,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     1px 1px 0 #000; ;
 }
 
+.blockText {
+    font-size: 4vmin;
+    color:white;
+}
+
 .blockStyle {
     flex-wrap: wrap;
 }
