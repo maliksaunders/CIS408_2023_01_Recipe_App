@@ -11,19 +11,14 @@
 <body class="loggedin">
     <div class="topnav">
         <a href="{{ url_for('search') }}">Home</a>
-        <a href="{{ url_for('main') }}">Profile</a>
-        <a class="login" href="{{ url_for('logout') }}"></i>Logout</a>
+        <a class="login" href="{{ url_for('logout') }}"></i>Logout</a>  
+        <a href="{{ url_for('main') }}" class="login">Profile</a>
     </div>
     <div class="main">
         <div class="flexbox">
-            <div class="sidenav">
-                <a href="{{ url_for('search') }}">Ingredient Search</a><br>
-            </div>
-            <div class="content">
-
-                <h2>Profile Page</h2>
-                <div>
-                    <p>Your account details are below:</p>
+            <div class="content flex-container2">
+                <h1 class="header2">Profile Page</h1><br>
+                <h2>Your account details are below:</h2> 
                     <table>
                         <tr>
                             <td>Username:</td>
@@ -35,17 +30,8 @@
                         </tr>
                         <tr>
                             <td>Past Searched recipes</td>
-                            
                         </tr>
                     </table>
-                </div>
-            </div>
-            <div class="rightbar" id="rightbarV">
-                <h1 style="text-align: center;">Ingredients</h1>
-                <h1 id="ingredients"></h1>
-                <div id="ingrDiv"></div>
-                <br>
-                <button class="submitBtn" id="submitBtn">Search</button>
             </div>
         </div>
     </div>
