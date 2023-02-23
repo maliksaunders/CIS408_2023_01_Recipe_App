@@ -88,7 +88,7 @@ def register():
             if not username or not password:
                 return 'Username and password are required'
             if create_user(username, password):
-                return 'User created successfully'
+                return render_template('index.html')
             else:
                 return 'User already exists'
     elif request.method == 'POST':
