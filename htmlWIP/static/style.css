@@ -214,10 +214,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 .rightbar {
     position: relative;
     width: 22%;
-    height: 80vh;
+    height: 78vh;
     min-height: 100px;
     min-width: 250px;
-    margin-top: 6vh;
+    margin-top: 8vh;
     padding: .5% 1% .5% .5%;
     margin-right: 2%;
     color: #818181;
