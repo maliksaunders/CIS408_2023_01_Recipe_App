@@ -139,6 +139,7 @@ def search():
         # sign up at https://developer.edamam.com/edamam-recipe-api for id and key, and insert here
         app_id = "47d553e8"
         app_key = "b749a2fd18806cba1583c944bf24a546"
+        username = session['username']
         result=''
         # defines variables to be used for including API parameters
         includeAppId = "app_id={}".format(app_id)
@@ -161,9 +162,12 @@ def search():
             results = requests.get(url)
             datas = json.loads(results.text)
             data_list = []
-            for data in datas:
-                print(data)
-                data_list.append(data)
+            with open('CSVFolder/fooditems.csv', 'a', newline='') as file:
+                writer = csv.writer(file)
+                for data in datas:
+                    print(data)
+                    data_list.append(data)
+                    writer.writerow([username,data])
 
 
             # Printing the results
@@ -221,7 +225,7 @@ def recipesearch():
         recipeList = []   
         linkList = []
         # loops through results again, where more than 0 results found...
-        with open('CSVFolder/searchitems.csv', 'a', newline='') as file:
+        with open('CSVFolder/recipeitems.csv', 'a', newline='') as file:
             writer = csv.writer(file)
             for result in results:
                 recipe = result['recipe']
