@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
-import MySQLdb.cursors
-import re
 import requests
 import json
 import csv
@@ -96,15 +94,6 @@ def register():
         msg = 'Please fill out the form!'
     # Show registration form with message (if any)
     return render_template('register.html', msg=msg)
-# http://localhost:5000/pythinlogin/home - this will be the home page, only accessible for loggedin users
-@app.route('/htmlWIP/home')
-def home():
-    # Check if user is loggedin
-    if 'loggedin' in session:
-        # User is loggedin show them the home page
-        return render_template('search.html', username=session['username'])
-    # User is not loggedin redirect to login page
-    return redirect(url_for('login'))
 
 @app.route('/htmlWIP/main')
 def main():
@@ -118,19 +107,6 @@ def main():
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 # http://localhost:5000/pythinlogin/profile - this will be the profile page, only accessible for loggedin users
-@app.route('/htmlWIP/profile')
-def profile():
-    # Check if user is loggedin
-    if 'loggedin' in session:
-        # We need all the account info for the user so we can display it on the profile page
-        username = session['username']
-        password = session['password']
-        verify_login(username, password)
-        account = (username, password)
-        # Show the profile page with account info
-        return render_template('profile.html', account=account)
-    # User is not loggedin redirect to login page
-    return redirect(url_for('login'))
 
 @app.route('/htmlWIP/search', methods=['GET','POST'])
 def search():
@@ -191,62 +167,58 @@ def recipesearch():
         includeAppId = "app_id={}".format(app_id)
         includeAppKey = "app_key={}".format(app_key)
 
-        ingredient = request.cookies.get('ingredients')
+        if request.cookies.get('ingredients') == None:
+            ingredient = request.cookies.get('ingredients')
 
-        # use split and join functions to enable selection of more than one ingredient
-        components = ingredient.split()
-        items = ",+".join(components) or "and+".join(components) or " +".join(components)
-        ingredients = "ingredients=" + items
-        includeIngredients = "q={}".format(ingredients)
-        # test
-        # print(ingredients)
-        url = 'https://api.edamam.com/search?{}&{}&{}'.format(includeIngredients, includeAppId, includeAppKey)
-        #recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
+            # use split and join functions to enable selection of more than one ingredient
+            components = ingredient.split()
+            items = ",+".join(components) or "and+".join(components) or " +".join(components)
+            ingredients = "ingredients=" + items
+            includeIngredients = "q={}".format(ingredients)
+            # test
+            # print(ingredients)
+            url = 'https://api.edamam.com/search?{}&{}&{}'.format(includeIngredients, includeAppId, includeAppKey)
+            #recipeChoices = 'You searched for ingredient options, using {} '.format(ingredients)
 
-        # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
-        results = requests.get(url)
-        datas = results.json()
-        results = datas['hits']
+            # requests and extracts recipes from the API, into the 'results' variable, based on user choices above
+            results = requests.get(url)
+            datas = results.json()
+            results = datas['hits']
 
-        # loops through results and adds 1 on each iteration (to count how many results found)
-        count = 0
-        for result in results:
-            recipe = result['recipe']
-            if int((recipe['calories']) / recipe['yield']):
-                count = count + 1
-            
-        # if more than 0 results found, prints 'Here are your recipes'
-        if count > 0:
-            print('Here are your recipes: ')
-        # else, if less than 0 results, prints 'Sorry, no recipes found' and the program ends here
-        else:
-            print('================================================================================')
-            print('Sorry, no recipes found!')
-        recipeList = []   
-        linkList = []
-        # loops through results again, where more than 0 results found...
-        with open('CSVFolder/recipeitems.csv', 'a', newline='') as file:
-            writer = csv.writer(file)
+            # loops through results and adds 1 on each iteration (to count how many results found)
+            count = 0
             for result in results:
                 recipe = result['recipe']
-                if int((recipe['calories']) / recipe['yield']) and count > 0:
-                    # define recipe info variables, i.e. name, web link, servings, nutrition, total time, and ingredients list
-                    recipeLabel = recipe['label']
-                    webLink = recipe['url']
-                    calories = round(int(recipe['calories'] / recipe['yield']))
-                    fat = recipe['totalNutrients']['FAT']
-                    fat_quantity = round(int(fat['quantity'] / recipe['yield']))
-                    protein = recipe['totalNutrients']['PROCNT']
-                    protein_quantity = round(int(protein['quantity'] / recipe['yield']))
-                    y = round(int(recipe['yield']))
-                    time = round(int(recipe['totalTime']))
-                    # prints recipe name, web link, servings, and nutrition info
-                    recipeList.append(recipeLabel)
-                    linkList.append(webLink)
-                    writer.writerow([username,recipeLabel, webLink, str(calories),str(fat_quantity),str(protein_quantity),str(y),str(time)])
-                else:
-                    pass         
-        return render_template('search.html', result2 = recipeList, result3 = linkList, len = len(recipeList))
+                if int((recipe['calories']) / recipe['yield']):
+                    count = count + 1
+                
+            recipeList = []   
+            linkList = []
+            # loops through results again, where more than 0 results found...
+            with open('CSVFolder/recipeitems.csv', 'a', newline='') as file:
+                writer = csv.writer(file)
+                for result in results:
+                    recipe = result['recipe']
+                    if int((recipe['calories']) / recipe['yield']) and count > 0:
+                        # define recipe info variables, i.e. name, web link, servings, nutrition, total time, and ingredients list
+                        recipeLabel = recipe['label']
+                        webLink = recipe['url']
+                        calories = round(int(recipe['calories'] / recipe['yield']))
+                        fat = recipe['totalNutrients']['FAT']
+                        fat_quantity = round(int(fat['quantity'] / recipe['yield']))
+                        protein = recipe['totalNutrients']['PROCNT']
+                        protein_quantity = round(int(protein['quantity'] / recipe['yield']))
+                        y = round(int(recipe['yield']))
+                        time = round(int(recipe['totalTime']))
+                        # prints recipe name, web link, servings, and nutrition info
+                        recipeList.append(recipeLabel)
+                        linkList.append(webLink)
+                        writer.writerow([username,recipeLabel, webLink, str(calories),str(fat_quantity),str(protein_quantity),str(y),str(time)])
+                    else:
+                        pass         
+            return render_template('search.html', result2 = recipeList, result3 = linkList, len = len(recipeList))
+        else:
+            return render_template('search.html')
     return redirect(url_for('login'))
    
 
