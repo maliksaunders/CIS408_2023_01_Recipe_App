@@ -58,22 +58,3 @@ function onloadButton() {
         }
     }
 }
-
-for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-        var insertText = current[0].textContent;
-
-        createButton(insertText);
-    });
-}
-
-window.addEventListener("beforeunload", function(e){
-    saveIngr();
-}, false);
-
-window.onload = function() {
-    onloadButton();
-}
