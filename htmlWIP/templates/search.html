@@ -25,18 +25,22 @@
                 </div>
                 <div class="flex-container" id="flexCont">
                     <button hidden class="btn active"> </button>
-                    {% if result %}
-                        <h1 class="header">Ingredients</h1>
-                        <h1 style="display: block"></h1>
-                        {% for item in result %}
-                            <button class="btn">{{item}}</button> 
-                        {% endfor %}                  
-                    {% endif %}
-                    {% if result2 %}
-                        <h1 class="header">Food Search</h1>
-                        {% for i in range (0, len) %}
-                            <button class="btn2" onclick="window.open('{{result3[i]}}', '_blank');">{{result2[i]}}</button> 
-                        {% endfor %}
+                    {% if result4 %}
+                        <h1 class="header">Please enter ingredients before searching!</h1>
+                    {% else %}
+                        {% if result %}
+                            <h1 class="header">Ingredients</h1>
+                            <h1 style="display: block"></h1>
+                            {% for item in result %}
+                                <button class="btn">{{item}}</button> 
+                            {% endfor %}                  
+                        {% endif %}
+                        {% if result2 %}
+                            <h1 class="header">Food Search</h1>
+                            {% for i in range (0, len) %}
+                                <button class="btn2" onclick="window.open('{{result3[i]}}', '_blank');">{{result2[i]}}</button> 
+                            {% endfor %}
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>

@@ -154,11 +154,12 @@ def recipesearch():
         app_key = "d7176dfe27ce3cda845f772b28d7e106"
         username = session['username']
         recipe=''
+        message = 'please search for ingredients first!'
         # defines variables to be used for including API parameters
         includeAppId = "app_id={}".format(app_id)
         includeAppKey = "app_key={}".format(app_key)
 
-        if request.cookies.get('ingredients') == None:
+        if request.cookies.get('ingredients') != "":
             ingredient = request.cookies.get('ingredients')
 
             # use split and join functions to enable selection of more than one ingredient
@@ -209,7 +210,7 @@ def recipesearch():
                         pass         
             return render_template('search.html', result2 = recipeList, result3 = linkList, len = len(recipeList))
         else:
-            return render_template('search.html')
+            return render_template('search.html', result4 = 1)
     return redirect(url_for('login'))
    
 
