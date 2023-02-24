@@ -13,22 +13,58 @@ Generate Recipes from list of ingredients
 - <b>Visual Studio Code</b>
 - <b>HTML</b>
 - <b>CSS</b>
+- <b>JavaScript</b>
+- <b>.CSV Files</b>
 - <b>MYSQL</b>
 
 <h2>Environments Used </h2>
 
 - <b>Windows 11</b>
 - <b>Windows 10</b>
-- <b>XenDeskTop</b>
 
 <h2>Program walk-through:</h2>
 
 <p align="center">
-Sample Image <br/>
-<img src="https://media.istockphoto.com/id/491520707/photo/sample-red-grunge-round-stamp-on-white-background.jpg?s=612x612&w=0&k=20&c=FW80kR5ilPkiJtXZEauGTghNBOgQviVPxAbhLWwnKZk=" height="50%" width="50%" alt="Sample"/>
+Register Page <br/>
+<img src="https://i.imgur.com/rw5HtNH.png" height="50%" width="50%" alt="Sample"/>
 <br />
 <br />
 
+<p align="center">
+Login Page <br/>
+<img src="https://i.imgur.com/rPamUBc.png" height="50%" width="50%" alt="Sample"/>
+<br />
+<br />
+
+<p align="center">
+Base home page before searching for food items <br/>
+<img src="https://i.imgur.com/k5txHZL.png" height="50%" width="50%" alt="Sample"/>
+<br />
+<br />
+
+<p align="center">
+Profile page still a work in progress may include a recent searchs object and a change password feature <br/>
+<img src="https://i.imgur.com/LwEVCLh.png" height="50%" width="50%" alt="Sample"/>
+<br />
+<br />
+
+<p align="center">
+When you search for ingredients at most 10 ingredients will pop up and you will be able to select them to add to your Ingredients list on the right <br/>
+<img src="https://i.imgur.com/9UkuUHG.png" height="50%" width="50%" alt="Sample"/>
+<br />
+<br />
+
+<p align="center">
+When you search for ingredients at most 10 ingredients will pop up and you will be able to select them to add to your Ingredients list on the right <br/>
+<img src="https://i.imgur.com/9UkuUHG.png" height="50%" width="50%" alt="Sample"/>
+<br />
+<br />
+
+<p align="center">
+After clicking search on the side nav bar will present you with at most 10 recipes at a time <br/>
+<img src="https://i.imgur.com/eR3LlCH.png" height="50%" width="50%" alt="Sample"/>
+<br />
+<br />
 
 <!--
  ```diff
