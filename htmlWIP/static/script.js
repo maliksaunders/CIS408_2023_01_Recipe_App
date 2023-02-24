@@ -15,12 +15,10 @@ function createButton (txt) {
     closeBtn.setAttribute('class', 'closeBtn');
     closeBtn.setAttribute('id', 'closeBtn' + x);
     closeBtn.setAttribute('onclick', 'closeThis(' + x +')');
-    closeBtn.setAttribute('style', 'display: inline-block');
     closeBtn.textContent = 'X';
 
     sideTxt.setAttribute('class', 'sideTxt');
     sideTxt.setAttribute('id', 'sideTxt' + x);
-    sideTxt.setAttribute('style', 'display: inline-block');
     sideTxt.textContent = txt;
 
     brCreate.setAttribute('style', 'display: block');

@@ -142,6 +142,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 }
 
 .sideTxt {
+    display: inline-block;
     margin-top: .3%;
     font-size: 3.4vmin;
     text-transform: capitalize;
@@ -162,6 +163,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     min-width: 100px;
     width: 20%;
     min-height: 15vh;
+    max-height:15vh;
     height: auto;
     margin: 2%;
     text-align: center;
@@ -264,6 +266,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 
 .closeBtn {
+    display: inline;
     background-color: #f1f1f1;
     width: 18%;
     height: 18%;
