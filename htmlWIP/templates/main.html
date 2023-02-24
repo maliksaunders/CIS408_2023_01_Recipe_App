@@ -24,40 +24,4 @@
             </div>
         </div>
     </div>
-    <script>
-
-        var btnContainer = document.getElementById("flexCont");
-        var rightbarVar = document.getElementById("ingrDiv");
-        var ingrItems = document.getElementsByClassName("sideTxt");
-        var submitBtn = document.getElementById("submitBtn");
-        var testing = document.getElementById("testing");
-        var arr = [];
-        var x = 0;
-
-        var btns = btnContainer.getElementsByClassName("btn");
-        
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function() {
-                var current = document.getElementsByClassName("active");
-                current[0].className = current[0].className.replace(" active", "");
-                this.className += " active";
-                var insertText = current[0].textContent;
-
-                createButton(insertText);
-            });
-        };
-
-        submitBtn.addEventListener("click", function () {
-                saveIngr();
-            }
-        )
-
-        window.addEventListener("beforeunload", function(e){
-            saveIngr();
-        }, false);
-
-        window.onload = function() {
-            onloadButton();
-        }
-    </script>
 </body>
